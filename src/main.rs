@@ -1,24 +1,23 @@
-fn count(mut num:i32)->i32{
-    if num < 0 {
-        // return count(-num);
-        num *= -1;
-
+fn reverse(mut num:i32)->i32{
+    let mut rev = 0;
+    while num!=0{
+        let digit = num %10;
+        num /=10;
+         if rev > i32::MAX / 10 || (rev == i32::MAX / 10 && digit > 7){
+                return 0;
+            }
+            if rev < i32::MIN / 10 || (rev == i32::MIN / 10 && digit < -8){
+                return 0;
+            }
+        rev = rev * 10 + digit;
     }
-        let mut n = num;
-        let mut count =0;
-        while n>0 {
-            n /=10;
-            count +=1;
-        } 
-        return count;
-    
+    return rev;
+
 }
 
 
 fn main() {
-    println!("Hello, world!");
-    // Count Digits in a number
-    let number = 555;
-    let count = count(number);
-    println!("Count: {}", count);
+    let number = -123;
+    let reversed = reverse(number);
+    println!("reversed: {}", reversed);
 }
