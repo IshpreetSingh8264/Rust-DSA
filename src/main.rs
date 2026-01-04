@@ -1,26 +1,12 @@
 fn main() {
-    let number = 29;
-    if is_prime(number) {
-        println!("{} is a prime number.", number);
+    let number = 121;
+    if is_palindrome(number) {
+        println!("{} is a palindrome.", number);
     } else {
-        println!("{} is not a prime number.", number);
+        println!("{} is not a palindrome.", number);
     }
 }
-
-
-
-
-
-
-
-fn is_prime(n: i32) -> bool {
-    if n <= 1 {
-        return false;
-    }
-    for i in 2..=((n as f64).sqrt() as i32) {
-        if n % i == 0 {
-            return false;
-        }
-    }
-    true
+fn is_palindrome(n: i32) -> bool {
+    let s = n.to_string();
+    s.chars().eq(s.chars().rev())
 }
