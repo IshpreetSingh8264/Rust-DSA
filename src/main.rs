@@ -1,23 +1,20 @@
-fn reverse(mut num:i32)->i32{
-    let mut rev = 0;
-    while num!=0{
-        let digit = num %10;
-        num /=10;
-         if rev > i32::MAX / 10 || (rev == i32::MAX / 10 && digit > 7){
-                return 0;
-            }
-            if rev < i32::MIN / 10 || (rev == i32::MIN / 10 && digit < -8){
-                return 0;
-            }
-        rev = rev * 10 + digit;
+fn main() {
+    let number = 153;
+    if amrstrong_number(number){
+        println!("{} is an Armstrong number", number);
+    }else{
+        println!("{} is not an Armstrong number", number);
     }
-    return rev;
-
 }
 
-
-fn main() {
-    let number = -123;
-    let reversed = reverse(number);
-    println!("reversed: {}", reversed);
+fn amrstrong_number(num: i32)-> bool{
+    let mut sum = 0;
+    let mut temp = num;
+    let digits = num.to_string().len() as u32;
+    while temp != 0{
+        let rem = temp %10;
+        sum += rem.pow(digits);
+        temp /=10;
+    }
+    return sum == num;
 }
