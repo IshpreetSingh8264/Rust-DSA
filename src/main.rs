@@ -1,12 +1,13 @@
 fn main() {
-    let number = 121;
-    if is_palindrome(number) {
-        println!("{} is a palindrome.", number);
-    } else {
-        println!("{} is not a palindrome.", number);
-    }
+    let num1 = 56;
+    let num2 = 98;
+    let result = gcd(num1, num2);
+    println!("The GCD of {} and {} is {}", num1, num2, result);    
 }
-fn is_palindrome(n: i32) -> bool {
-    let s = n.to_string();
-    s.chars().eq(s.chars().rev())
+fn gcd(n1: i32, n2: i32) -> i32 {
+    if n2 == 0 {
+        n1.abs()
+    } else {
+        gcd(n2, n1 % n2)
+    }
 }
