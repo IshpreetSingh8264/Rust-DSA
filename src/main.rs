@@ -1,11 +1,20 @@
 fn main() {
-    let res = find_factorial(5);
-    println!("{}",res);
+    let array: &mut [i32] = &mut [10, 20, 30, 40, 50];
+    
+    reverse_array(array, 0, array.len() - 1);
+    println!("{:?}", array);
 }
 
-fn find_factorial(num:i32) -> i32{
-    if num == 0 {
-        return 1;
+
+fn reverse_array(arr: &mut [i32], start: usize, end: usize) {
+    if start >= end {
+        return;
     }
-    num * find_factorial(num - 1)
+    // Swap elements at start and end
+    let temp = arr[start];
+    arr[start] = arr[end];
+    arr[end] = temp;
+
+    // Recursive call
+    reverse_array(arr, start + 1, end - 1);
 }
