@@ -1,10 +1,10 @@
 fn main() {
-    print_numbers_recursive(10);
+    print_numbers_recursive_reverse(10);
 }
 
-fn print_numbers_recursive(n:i32){
-    if n >1{
-        print_numbers_recursive(n-1);
-    }
+fn print_numbers_recursive_reverse(n:i32){
     println!("{}",n);
+    if n >1{
+        print_numbers_recursive_reverse(n-1);
+    }
 }
