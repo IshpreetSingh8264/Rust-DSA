@@ -1,20 +1,19 @@
 fn main() {
-    let array: &mut [i32] = &mut [10, 20, 30, 40, 50];
-    
-    reverse_array(array, 0, array.len() - 1);
-    println!("{:?}", array);
+    let string = String::from("mom");
+    let result = recursice_palindrome(&string);
+    println!("Is '{}' a palindrome? {}", string, result);
 }
 
-
-fn reverse_array(arr: &mut [i32], start: usize, end: usize) {
-    if start >= end {
-        return;
+fn recursice_palindrome(s:&str) -> bool{
+    if s.len() <=1{
+        return true;
     }
-    // Swap elements at start and end
-    let temp = arr[start];
-    arr[start] = arr[end];
-    arr[end] = temp;
 
-    // Recursive call
-    reverse_array(arr, start + 1, end - 1);
+    let bytes = s.as_bytes();
+
+    if bytes[0] != bytes[s.len()-1]{
+        return false;
+    }
+
+    recursice_palindrome(&s[1..s.len()-1])
 }
