@@ -1,13 +1,12 @@
 fn main() {
-    printNameRecursive(5);
+    print_name_recursive(5);
 }
 
-fn printNameRecursive(count:i32){
+fn print_name_recursive(count:i32){
     if count <=0{
         return;
     }
 
     println!("Ishpreet Singh");
-    printNameRecursive(count-1);
-
+    print_name_recursive(count-1);
 }
