@@ -1,19 +1,20 @@
 fn main() {
-    let string = String::from("mom");
-    let result = recursice_palindrome(&string);
-    println!("Is '{}' a palindrome? {}", string, result);
+    let x = 2;
+    print_fib_upto(x);
+
 }
 
-fn recursice_palindrome(s:&str) -> bool{
-    if s.len() <=1{
-        return true;
+fn recursive_fib(n:i32) ->i32{
+    if n <=1{
+        return n;
     }
+    recursive_fib(n-1) + recursive_fib(n-2)
+}
 
-    let bytes = s.as_bytes();
-
-    if bytes[0] != bytes[s.len()-1]{
-        return false;
+fn print_fib_upto(n: i32) {
+    if n < 0 {
+        return;
     }
-
-    recursice_palindrome(&s[1..s.len()-1])
+    print_fib_upto(n - 1);
+    println!("{}", recursive_fib(n));
 }
