@@ -1,34 +1,15 @@
 fn main() {
-    let arr = [12, 35, 1, 10, 34, 1];
-    let (second_smallest, second_largest) = find_second_smallest_largest(&arr);
-    println!("Second Smallest: {}", second_smallest);
-    println!("Second Largest: {}", second_largest);
+    println!("Hello, dsaprep!");
+    let vector = vec![7, 2, 5, 3, 9, 1, 4];
+    let result = find_second_smallest_largest_using_sorting(&vector);
+    println!("Second Smallest: {}, Second Largest: {}", result[0], result[1])
+
 }
 
-fn find_second_smallest_largest(arr: &[i32]) -> (i32, i32) {
-    let mut first_smallest = i32::MAX;
-    let mut second_smallest = i32::MAX;
-    let mut first_largest = i32::MIN;
-    let mut second_largest = i32::MIN;
-
-    for &num in arr {
-        if num < first_smallest {
-            second_smallest = first_smallest;
-            first_smallest = num;
-        } else if num > first_smallest && num < second_smallest {
-            second_smallest = num;
-        }
-
-        if num > first_largest {
-            second_largest = first_largest;
-            first_largest = num;
-        } else if num < first_largest && num > second_largest {
-            second_largest = num;
-        }
-    }
-
-    let second_smallest_result = if second_smallest == i32::MAX { -1 } else { second_smallest };
-    let second_largest_result = if second_largest == i32::MIN { -1 } else { second_largest };
-
-    (second_smallest_result, second_largest_result)
+fn find_second_smallest_largest_using_sorting(arr: &Vec<i32>) -> [i32; 2]{
+    let mut sorted_array = arr.clone();
+    sorted_array.sort_unstable();
+    let second_smallest = sorted_array[1];
+    let second_largest = sorted_array[sorted_array.len() - 2];
+    [second_smallest, second_largest]
 }
