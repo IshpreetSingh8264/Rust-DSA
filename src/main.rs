@@ -4,7 +4,9 @@ fn main() {
     println!("Is the array sorted? {}", result);
 }
 fn check_array_sorted(arr:&Vec<i32>)->bool{
-
+    if arr.len() == 0 || arr.len() == 1{
+        return true;
+    }
     for i in 0..arr.len()-1{
         if arr[i] > arr[i+1]{
             return false;
